@@ -1,9 +1,17 @@
-import React, { useContext } from "react";
+import React, { useContext, useState } from "react";
+
+const url =
+  "https://www.thecocktaildb.com/api/json/v1/1/search.php?s=";
 const AppContext = React.createContext();
 
 const AppProvider = (props) => {
+  const [loading, setLoading] = useState(true);
+  const [searchTerm, setSearchTerm] = useState("a");
+  const [cocktails, setCocktails] = useState([]);
   return (
-    <AppContext.Provider value="The Priyanka here!!!!!!!!!!">
+    <AppContext.Provider
+      value={{ loading, cocktails, setSearchTerm }}
+    >
       {props.children}
     </AppContext.Provider>
   );
